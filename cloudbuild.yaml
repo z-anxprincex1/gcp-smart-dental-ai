@@ -1,0 +1,23 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/smart-bonus-293007/smart-dental-flask', '.']
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/smart-bonus-293007/smart-dental-flask']
+  
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args:
+   - 'run'
+   - 'deploy'
+   - 'smart-dental-ai'
+   - '--image'
+   - 'gcr.io/smart-bonus-293007/smart-dental-flask'
+   - '--region'
+   - 'us-central1'
+   - '--allow-unauthenticated'
+images:
+- 'gcr.io/smart-bonus-293007/smart-dental-flask'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
