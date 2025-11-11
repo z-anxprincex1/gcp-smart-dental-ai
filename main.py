@@ -19,8 +19,8 @@ def load_model():
     bucket_xgb = storage_client.get_bucket(bucket_name_xgb)
     bucket_labid = storage_client.get_bucket(bucket_name_labid)
 
-    blob_xgb = bucket_xgb.blob("ml_artifacts/xgb_model.joblib")
-    blob_labid = bucket_labid.blob("ml_artifacts/lab_encoder.joblib")
+    blob_xgb = bucket_xgb.blob("xgb_model.joblib")
+    blob_labid = bucket_labid.blob("lab_encoder.joblib")
 
     blob_xgb.download_to_filename("xgb_model.joblib")
     blob_labid.download_to_filename("lab_encoder.joblib")
