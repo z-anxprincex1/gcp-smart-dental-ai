@@ -12,7 +12,7 @@ CORS(app)
 MODEL = None
 
 def load_model():
-    storage_client = storage.client()
+    storage_client = storage.Client()
     bucket_name_xgb = "smart-dental-t1"
     bucket_name_labid = "smart-dental-lab-id"
 
